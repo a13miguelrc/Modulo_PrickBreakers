@@ -20,22 +20,4 @@ __author__ = 'PrickBreakers'
 #
 ##############################################################################
 
-
-
-
-
-
-
-
-#Comentario 2   proba
-
-
-#Comentario con coidado
-
 import electroPB
-
-
-
-#Hola ksalfalskjfñasjfñlajsfñlsjfñljsñflajsfñljasfñljsa
-#Hola2fnsdfnsdnklfkfndsfsdklfndsksdfkdlnfsklsdfklsfdkdfsksdfkfsdknsfdlnfsdlkndsfklnsfdkn
-#hola3 lsjlsdkjgñsld
