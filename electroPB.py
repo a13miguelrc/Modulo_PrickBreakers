@@ -8,9 +8,9 @@ class Empleado(orm.Model):
     _columns = {
         'nombre':fields.char('Nombre',size=20),
         'apellidos':fields.char('Apellidos',size=50),
-        'direccion':fields.char('Direcci贸n',size=50),
+        'direccion':fields.char('Direcci髇',size=50),
         'fecha_nacimiento':fields.date('Fecha Nacimiento'),
-        'telefono':fields.char('Tel茅fono',size=9),
+        'telefono':fields.char('Tel閒ono',size=9),
         'servicio_id':fields.one2many('servicio.codigo','servicio_id','Hoja_de_Servicio')
     }
 
@@ -19,12 +19,12 @@ class Empleado(orm.Model):
 class Servicio(orm.Model):
     _name = 'servicio'
     _columns = {
-        'codigo':fields.integer('C贸digo'),
-        'tipo':fields.selection((('REP','Reparaci贸n'), ('E','Entrega'), ('REC','Recogida')),'Tipo'),
-        'ubicacion':fields.selection((('D','A Domicilio'), ('T','Taller')),'Ubicaci贸n'),
-        'electrodomestico':fields.char('Electrodom茅stico',size=40),
-        'descripcion':fields.char('Descripci贸n',size=120),
-        'direccion':fields.char('Direcci贸n',size=50),
+        'codigo':fields.integer('C骴igo'),
+        'tipo':fields.selection((('REP','Reparaci髇'), ('E','Entrega'), ('REC','Recogida')),'Tipo'),
+        'ubicacion':fields.selection((('D','A Domicilio'), ('T','Taller')),'Ubicaci髇'),
+        'electrodomestico':fields.char('Electrodom閟tico',size=40),
+        'descripcion':fields.char('Descripci髇',size=120),
+        'direccion':fields.char('Direcci髇',size=50),
         'empleado_id':fields.many2one('empleado','Empleado')
     }
 Servicio()
@@ -36,7 +36,7 @@ class Flota(orm.model):
     _colums = {
         'marca':fields.selection((('marca1', 'Volkswagen'), ('marca2', 'Ford'), ('marca3', 'Renault')), 'Marca'),
         'modelo':fields.selection((('modelo1', 'Caddy'), ('modelo2', 'Transit'), ('modelo3', 'Kangoo')), 'Modelo'),
-        'matricula':fields.selection((('matric1', '6584-HMN'), ('matric1', '5327-HCD'), ('matric3', '2167-DLL')),'Matr铆cula'),
+        'matricula':fields.selection((('matric1', '6584-HMN'), ('matric1', '5327-HCD'), ('matric3', '2167-DLL')),'Matr韈ula'),
         'hora_salida':fields.date('Hora salida'),
         'hora_llegada':fields.date('Hora llegada')
     }
