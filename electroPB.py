@@ -12,12 +12,12 @@ class Empleado(orm.Model):
         'telefono': fields.char('Telefono', size=9),
         'image': fields.binary('Imagen', help='Seleccionar imagen aqui')
     }
-    # Orden para que nos muestre primero las últimas personas
+    # Orden para que nos muestre primero las ultimas personas
     _order = 'id desc'
 
-    # Restricción única al campo NIF
+    # Restricción unica al campo NIF
     _sql_constraints = [
-        ('nif_unique', 'unique(nif)', 'El NIF debe ser único'),
+        ('nif_unique', 'unique(nif)', 'El NIF debe ser unico'),
     ]
 Empleado()
 
