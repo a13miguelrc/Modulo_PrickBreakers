@@ -1,9 +1,9 @@
-__author__ = 'PrickBreakers'
+__author__ = "PrickBreakers"
 
 from setuptools import setup, find_packages
 
 setup (
-       name='electropb',
+       name='electroPB',
        version='0.1',
        packages=find_packages(),
 
