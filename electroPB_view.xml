@@ -1,16 +1,75 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <openerp>
-	<data>
-        <!-- FORM PARA INCLUIR EL Campo Lugar de nacimiento en res.partner  -->
-        <record id="res_partner_crm_product_form_inherit" model="ir.ui.view">
-            <field name="name">res.partner.lugar.nacimiento.view.form</field>
-            <field name="model">res.partner</field>
-            <field name="inherit_id" ref="base.view_partner_form"/>
-            <field name="arch" type="xml">
-                <field name="website" position="after">
-
+    <data>
+     
+        <!-- PARTE 1: SECCIÓN CON LAS VISTAS -->
+            <!-- Declaración del filtro de búsqueda -->
+            <record id="persona_filter" model="ir.ui.view">
+                <field name="name">persona.select</field>
+                <field name="model">personas.persona</field>
+                <field name="type">search</field>
+                <field name="arch" type="xml">
+                    <search string="Buscar persona">
+                       <group col='5' colspan='2'>
+                        <field name="nif" select="1"/>
+                        <field name="apellidos" select="1"/>
+                        <field name="nombre" select="1"/>
+                        <field name="genero" select="1"/>
+                        <field name="telefono" select="1"/>
+                        <field name="anotaciones" select="1"/>
+                       </group>
+                    </search>
                 </field>
-            </field>
-        </record>
-	</data>
+            </record>
+            <!-- Declaración del formulario -->
+            <record model="ir.ui.view" id="persona_form">
+                <field name="name">persona</field>
+                <field name="model">personas.persona</field>
+                <field name="type">form</field>
+                <field name="arch" type="xml">
+                    <form string="Personas">
+                        <group col='5' colspan='2'>
+                            <field name="nif" />
+                            <field name="apellidos" />
+                            <field name="nombre" />
+                            <field name="genero" />
+                            <field name="telefono" />
+                            <field name="anotaciones" />
+                        </group>
+                    </form>
+                </field>
+            </record>
+            <!-- Declaración de la vista de árbol-->
+            <record model="ir.ui.view" id="persona_tree">
+                <field name="name">persona</field>
+                <field name="model">personas.persona</field>
+                <field name="type">tree</field>
+                <field name="arch" type="xml">
+                    <tree string="Personas">
+                        <field name="nif" />
+                        <field name="apellidos" />
+                        <field name="nombre" />
+                        <field name="genero" />
+                        <field name="telefono" />
+                    </tree>
+                </field>
+            </record>
+        <!-- FIN PARTE 1 -->
+         
+        <!-- PARTE 2: ACCIONES -->
+            <record model="ir.actions.act_window" id="action_persona">
+                <field name="name">persona</field>
+                <field name="res_model">personas.persona</field>
+                <field name="view_type">form</field>
+                <field name="view_mode">tree,form</field>
+            </record>
+        <!-- FIN PARTE 2 -->
+         
+        <!-- PARTE 3: MENÚ -->
+            <menuitem id="menu_personas_main" name="Personas" action="action_persona"/>
+            <menuitem id="menu_personas_gestion" parent="menu_personas_main" name="Gestionar"/>
+            <menuitem id="menu_personas_perfiles" parent="menu_personas_gestion" name="Perfiles" action="action_persona"/>
+        <!-- FIN PARTE 3 -->
+ 
+    </data>
 </openerp>
