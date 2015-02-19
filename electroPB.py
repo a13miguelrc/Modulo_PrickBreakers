@@ -4,13 +4,13 @@ from openerp.osv import fields, orm
 class Empleado(orm.Model):
     _name = 'empleados.empleado'
     _columns = {
-        'nif':fields.char('NIF', size=9, required=TRUE),
-        'nombre':fields.char('Nombre',size=20),
-        'apellidos':fields.char('Apellidos',size=50),
-        'direccion':fields.char('Direccion',size=50),
-        'fecha_nacimiento':fields.date('Fecha Nacimiento'),
-        'telefono':fields.char('Telefono',size=9),
-        'image':fields.binary('Imagen', help='Seleccionar imagen aqui')
+        'nif': fields.char('NIF', size=9, required=True),
+        'nombre': fields.char('Nombre', size=20),
+        'apellidos': fields.char('Apellidos', size=50),
+        'direccion': fields.char('Direccion', size=50),
+        'fecha_nacimiento': fields.date('Fecha Nacimiento'),
+        'telefono': fields.char('Telefono', size=9),
+        'image': fields.binary('Imagen', help='Seleccionar imagen aqui')
     }
     # Orden para que nos muestre primero las últimas personas
     _order = 'id desc'
