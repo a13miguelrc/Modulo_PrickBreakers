@@ -25,7 +25,7 @@ class Servicio(orm.Model):
         'electrodomestico':fields.char('Electrodomestico',size=40),
         'descripcion':fields.char('Descripcion',size=120),
         'direccion':fields.char('Direccion',size=50),
-        'empleado_id':fields.many2one('empleado','Empleado')
+        'empleado_id':fields.many2one('empleado','Empleado', ondelete='cascade')
     }
 Servicio()
 
@@ -39,5 +39,5 @@ class Furgoneta(orm.model):
         'matricula':fields.selection((('matric1', '6584-HMN'), ('matric1', '5327-HCD'), ('matric3', '2167-DLL')),'Matricula'),
         'hora_salida':fields.date('Hora salida'),
         'hora_llegada':fields.date('Hora llegada'),
-        'usuario': fields.many2one('empleado','Usuario', ondelete='cascade')
+        'empleado_id': fields.many2one('empleado','Usuario', ondelete='cascade')
     }
