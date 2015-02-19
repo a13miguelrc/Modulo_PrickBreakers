@@ -6,7 +6,7 @@
             <!-- Declaración del formulario -->
             <record model="ir.ui.view" id="empleados_form">
                 <field name="name">empleado</field>
-                <field name="model">empleados.empleado</field> #El modelo se corresponde con el nombre de la clase, en este caso la clase empleado.
+                <field name="model">empleados.empleado</field> <!--El modelo se corresponde con el nombre de la clase, en este caso la clase empleado.-->
                 <field name="type">form</field>
                 <field name="arch" type="xml">
                     <form string="Empleados">
