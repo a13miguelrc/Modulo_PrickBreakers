@@ -21,6 +21,7 @@
 
 {
     "name": "ElectroPB",
+    "icon": "/Modulo_PrickBreakers/static/img/icon.png",
     "version": "0.1",
     "category": "",
     "depends": [
