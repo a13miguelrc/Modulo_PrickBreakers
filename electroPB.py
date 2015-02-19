@@ -6,11 +6,13 @@ from openerp.osv import fields, orm
 class Empleado(orm.Model):
     _name = 'empleado'
     _columns = {
+        'nif':fields.char('NIF', size=9),
         'nombre':fields.char('Nombre',size=20),
         'apellidos':fields.char('Apellidos',size=50),
         'direccion':fields.char('Direccion',size=50),
         'fecha_nacimiento':fields.date('Fecha Nacimiento'),
         'telefono':fields.char('Telefono',size=9),
+        'image':fields.binary('Imagen', help='Seleccionar imagen aqui'),
         'servicio_id':fields.one2many('servicio.codigo','servicio_id','Hoja_de_Servicio')
     }
 
@@ -25,7 +27,7 @@ class Servicio(orm.Model):
         'electrodomestico':fields.char('Electrodomestico',size=40),
         'descripcion':fields.char('Descripcion',size=120),
         'direccion':fields.char('Direccion',size=50),
-        'empleado_id':fields.many2one('empleado','Empleado', ondelete='cascade')
+        'empleado_id':fields.many2one('empleado','Empleado')
     }
 Servicio()
 
@@ -39,5 +41,5 @@ class Furgoneta(orm.model):
         'matricula':fields.selection((('matric1', '6584-HMN'), ('matric1', '5327-HCD'), ('matric3', '2167-DLL')),'Matricula'),
         'hora_salida':fields.date('Hora salida'),
         'hora_llegada':fields.date('Hora llegada'),
-        'empleado_id': fields.many2one('empleado','Usuario', ondelete='cascade')
+        'usuario': fields.many2one('empleado_id','Usuario', ondelete='cascade')
     }
