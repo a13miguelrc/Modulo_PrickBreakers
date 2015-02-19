@@ -3,53 +3,37 @@
     <data>
      
         <!-- PARTE 1: SECCIÓN CON LAS VISTAS -->
-            <!-- Declaración del filtro de búsqueda -->
-            <record id="persona_filter" model="ir.ui.view">
-                <field name="name">persona.select</field>
-                <field name="model">personas.persona</field>
-                <field name="type">search</field>
-                <field name="arch" type="xml">
-                    <search string="Buscar persona">
-                       <group col='5' colspan='2'>
-                        <field name="nif" select="1"/>
-                        <field name="apellidos" select="1"/>
-                        <field name="nombre" select="1"/>
-                        <field name="genero" select="1"/>
-                        <field name="telefono" select="1"/>
-                        <field name="anotaciones" select="1"/>
-                       </group>
-                    </search>
-                </field>
-            </record>
             <!-- Declaración del formulario -->
-            <record model="ir.ui.view" id="persona_form">
-                <field name="name">persona</field>
-                <field name="model">personas.persona</field>
+            <record model="ir.ui.view" id="empleados_form">
+                <field name="name">empleado</field>
+                <field name="model">empleados.empleado</field> #El modelo se corresponde con el nombre de la clase, en este caso la clase empleado.
                 <field name="type">form</field>
                 <field name="arch" type="xml">
-                    <form string="Personas">
-                        <group col='5' colspan='2'>
+                    <form string="Empleados">
+                        <group col='7' colspan='2'>
+                            <field name="image" />
                             <field name="nif" />
-                            <field name="apellidos" />
                             <field name="nombre" />
-                            <field name="genero" />
+                            <field name="apellidos" />
+                            <field name="direccion" />
+                            <field name="fecha_nacimiento" />
                             <field name="telefono" />
-                            <field name="anotaciones" />
                         </group>
                     </form>
                 </field>
             </record>
             <!-- Declaración de la vista de árbol-->
-            <record model="ir.ui.view" id="persona_tree">
-                <field name="name">persona</field>
-                <field name="model">personas.persona</field>
+            <record model="ir.ui.view" id="empleados_tree">
+                <field name="name">empleado</field>
+                <field name="model">empleados.empleado</field>
                 <field name="type">tree</field>
                 <field name="arch" type="xml">
-                    <tree string="Personas">
+                    <tree string="Empleados">
                         <field name="nif" />
-                        <field name="apellidos" />
                         <field name="nombre" />
-                        <field name="genero" />
+                        <field name="apellidos" />
+                        <field name="direccion" />
+                        <field name="fecha_nacimiento" />
                         <field name="telefono" />
                     </tree>
                 </field>
@@ -57,18 +41,18 @@
         <!-- FIN PARTE 1 -->
          
         <!-- PARTE 2: ACCIONES -->
-            <record model="ir.actions.act_window" id="action_persona">
-                <field name="name">persona</field>
-                <field name="res_model">personas.persona</field>
+            <record model="ir.actions.act_window" id="action_empleado">
+                <field name="name">empleado</field>
+                <field name="res_model">empleados.empleado</field>
                 <field name="view_type">form</field>
                 <field name="view_mode">tree,form</field>
             </record>
         <!-- FIN PARTE 2 -->
          
         <!-- PARTE 3: MENÚ -->
-            <menuitem id="menu_personas_main" name="Personas" action="action_persona"/>
-            <menuitem id="menu_personas_gestion" parent="menu_personas_main" name="Gestionar"/>
-            <menuitem id="menu_personas_perfiles" parent="menu_personas_gestion" name="Perfiles" action="action_persona"/>
+            <menuitem id="menu_empleados_main" name="Empleados" action="action_empleado"/>
+            <menuitem id="menu_empleados_gestion" parent="menu_empleados_main" name="Gestionar"/>
+            <menuitem id="menu_empleados_perfiles" parent="menu_empleados_gestion" name="Perfiles" action="action_empleado"/>
         <!-- FIN PARTE 3 -->
  
     </data>
