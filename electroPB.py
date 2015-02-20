@@ -26,7 +26,7 @@ Empleado()
 
 class Furgoneta(orm.Model):
     _name = 'furgonetas.furgoneta'
-    SELECTION_LIST = (('MV1','Caddy'), ('MV2','Transporter'))
+    SELECTION_LIST_1 = (('MV1','Caddy'), ('MV2','Transporter'))
     SELECTION_LIST_2 = (('MF1','Transit'), ('MF2','Tourneo'))
     SELECTION_LIST_3 = (('MR1','Kangoo'), ('MR2','Traffic'))
     _columns = {
@@ -38,14 +38,18 @@ class Furgoneta(orm.Model):
 Furgoneta()
 
 def _set_list_data(self,cr,uid,selected,context=None):
-        if selected == 'selection1':
+        if selected == 'marca1':
+            SELECTION_LIST = SELECTION_LIST_1
+            vals = {'type_selection_1': SELECTION_LIST_1}
+            return {'type_selection_1': SELECTION_LIST_1}
+        if selected == 'marca2':
             SELECTION_LIST = SELECTION_LIST_2
             vals = {'type_selection_2': SELECTION_LIST_2}
             return {'type_selection_2': SELECTION_LIST_2}
-        else:
-            vals = {'type_selection_2': SELECTION_LIST_3}
+        if selected == 'marca3':
             SELECTION_LIST = SELECTION_LIST_3
-            return {'type_selection_2': SELECTION_LIST_3}
+            vals = {'type_selection_3': SELECTION_LIST_3}
+            return {'type_selection_3': SELECTION_LIST_3}
 
 def _get_selection(self, cr, uid, context=None):
         return SELECTION_LIST
