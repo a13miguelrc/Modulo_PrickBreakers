@@ -22,12 +22,18 @@ class Empleado(orm.Model):
 Empleado()
 
 #FlotaFurgonetas
+
+
 class Furgoneta(orm.Model):
     _name = 'furgonetas.furgoneta'
+    SELECTION_LIST = (('MV1','Caddy'), ('MV2','Transporter'))
+    SELECTION_LIST_2 = (('MF1','Transit'), ('MF2','Tourneo'))
+    SELECTION_LIST_3 = (('MR1','Kangoo'), ('MR2','Traffic'))
     _columns = {
         'marca':fields.selection((('marca1', 'Volkswagen'), ('marca2', 'Ford'), ('marca3', 'Renault')), 'Marca'),
         'modelo':fields.selection((('modelo1', 'Caddy'), ('modelo2', 'Transit'), ('modelo3', 'Kangoo')), 'Modelo'),
-        'matricula':fields.char('Matricula', size=8)
+        'matricula':fields.char('Matricula', size=8),
+        'image': fields.binary('Imagen', help='Seleccionar imagen aqui')
     }
 Furgoneta()
 
