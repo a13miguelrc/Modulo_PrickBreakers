@@ -21,10 +21,31 @@ class Empleado(orm.Model):
     ]
 Empleado()
 
+#FlotaFurgonetas
+class Furgoneta(orm.model):
+    _name = 'furgonetas.furgoneta'
+    _colums = {
+        'marca':fields.selection((('marca1', 'Volkswagen'), ('marca2', 'Ford'), ('marca3', 'Renault')), 'Marca'),
+        'modelo':fields.selection((('modelo1', 'Caddy'), ('modelo2', 'Transit'), ('modelo3', 'Kangoo')), 'Modelo'),
+        'matricula':fields.selection((('matric1', '6584-HMN'), ('matric1', '5327-HCD'), ('matric3', '2167-DLL')),'Matricula')
+    }
+Furgoneta()
+
+#HojaDeServicio
+#class HojaServicio(orm.Model):
+#    _name = 'hojas.hoja'
+#    _columns = {
+#        'empleado_id':fields.many2one('empleados.empleado','Empleado'),
+#        'hora_salida':fields.date('Hora salida'),
+#        'hora_llegada':fields.date('Hora llegada'),
+#        'furgoneta_id':fields.many2one('furgonetas.furgoneta','Furgoneta'),
+#        'servicio_id':fields.one2manyfields.one2many('servicios.servicio.descripcion','servicios.servicio_id','Servicios')
+#    }
+#HojaServicio()
 
 #Servicio
 #class Servicio(orm.Model):
-#   _name = 'servicio'
+#   _name = 'servicios.servicio'
 #    _columns = {
 #        'codigo':fields.integer('Codigo'),
 #        'tipo':fields.selection((('REP','Reparacion'), ('E','Entrega'), ('REC','Recogida')),'Tipo'),
@@ -32,20 +53,5 @@ Empleado()
 #        'electrodomestico':fields.char('Electrodomestico',size=40),
 #        'descripcion':fields.char('Descripcion',size=120),
 #        'direccion':fields.char('Direccion',size=50),
-#        'empleado_id':fields.many2one('empleado','Empleado')
 #    }
 #Servicio()
-
-
-#FlotaFurgonetas
-#class Furgoneta(orm.model):
-#    _name = 'furgoneta'
-#    _colums = {
-#        'marca':fields.selection((('marca1', 'Volkswagen'), ('marca2', 'Ford'), ('marca3', 'Renault')), 'Marca'),
-#        'modelo':fields.selection((('modelo1', 'Caddy'), ('modelo2', 'Transit'), ('modelo3', 'Kangoo')), 'Modelo'),
-#        'matricula':fields.selection((('matric1', '6584-HMN'), ('matric1', '5327-HCD'), ('matric3', '2167-DLL')),'Matricula'),
-#        'hora_salida':fields.date('Hora salida'),
-#        'hora_llegada':fields.date('Hora llegada'),
-#        'empleado_id':fields.many2one('empleado','Usuario', ondelete='cascade')
-#    }
-#Furgoneta()
