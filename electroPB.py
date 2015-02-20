@@ -15,7 +15,7 @@ class Empleado(orm.Model):
     # Orden para que nos muestre primero las ultimas personas
     _order = 'id desc'
 
-    # Restricción unica al campo NIF
+    # Restriccion unica al campo NIF
     _sql_constraints = [
         ('nif_unique', 'unique(nif)', 'El NIF debe ser unico'),
     ]
