@@ -100,7 +100,7 @@
             <record model="ir.ui.view" id="furgonetas_form">
                 <field name="name">furgoneta</field>
                 <field name="model">furgonetas.furgoneta</field>
-                <field name="type">canvas</field>
+                <field name="type">form</field>
                 <field name="arch" type="xml">
                     <form string="Furgonetas">
                         <field name="marca" />
