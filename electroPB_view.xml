@@ -10,7 +10,7 @@
                 <field name="type">form</field>
                 <field name="arch" type="xml">
                     <form string="Empleados">
-                        <group col='7' colspan='2'>
+                        <group col='2' colspan='2'>
                             <field name="image" widget='image' class="oe_left oe_avatar"/>
                             <field name="nif" />
                             <field name="nombre" />
@@ -38,6 +38,23 @@
                     </tree>
                 </field>
             </record>
+            <!-- Declaracion de la vista canvas-->
+            <record model="ir.ui.view" id="empleados_canvas">
+                <field name="name">empleado</field>
+                <field name="model">empleados.empleado</field>
+                <field name="type">canvas</field>
+                <field name="arch" type="xml">
+                    <canvas string="Empleados">
+                        <field name="image" widget='image' class="oe_left oe_avatar"/>
+                        <field name="nif" />
+                        <field name="nombre" />
+                        <field name="apellidos" />
+                        <field name="direccion" />
+                        <field name="fecha_nacimiento" />
+                        <field name="telefono" />
+                    </canvas>
+                </field>
+            </record>
         <!-- FIN PARTE 1 -->
          
         <!-- PARTE 2: ACCIONES -->
@@ -45,15 +62,70 @@
                 <field name="name">empleado</field>
                 <field name="res_model">empleados.empleado</field>
                 <field name="view_type">form</field>
-                <field name="view_mode">tree,form</field>
+                <field name="view_mode">tree,form,canvas</field>
             </record>
         <!-- FIN PARTE 2 -->
-         
+
+        <!-- PARTE 1: SECCIÓN CON LAS VISTAS -->
+            <!-- Declaración del formulario -->
+            <record model="ir.ui.view" id="furgonetas_form">
+                <field name="name">furgoneta</field>
+                <field name="model">furgonetas.furgoneta</field>
+                <field name="type">canvas</field>
+                <field name="arch" type="xml">
+                    <form string="Furgonetas">
+                        <field name="marca" />
+                        <field name="modelo" />
+                        <field name="matricula" />
+                    </form>
+                </field>
+            </record>
+
+            <!-- Declaración de la vista tree -->
+            <record model="ir.ui.view" id="furgonetas_form">
+                <field name="name">furgoneta</field>
+                <field name="model">furgonetas.furgoneta</field>
+                <field name="type">tree</field>
+                <field name="arch" type="xml">
+                    <tree string="Furgonetas">
+                        <field name="marca" />
+                        <field name="modelo" />
+                        <field name="matricula" />
+                    </tree>
+                </field>
+            </record>
+
+            <!-- Declaración de la vista canvas -->
+            <record model="ir.ui.view" id="furgonetas_form">
+                <field name="name">furgoneta</field>
+                <field name="model">furgonetas.furgoneta</field>
+                <field name="type">canvas</field>
+                <field name="arch" type="xml">
+                    <canvas string="Furgonetas">
+                        <field name="marca" />
+                        <field name="modelo" />
+                        <field name="matricula" />
+                    </canvas>
+                </field>
+            </record>
+
+            <!-- PARTE 2: ACCIONES -->
+            <record model="ir.actions.act_window" id="action_furgoneta">
+                <field name="name">furgoneta</field>
+                <field name="res_model">furgonetas.furgoneta</field>
+                <field name="view_type">form</field>
+                <field name="view_mode">tree,form,canvas</field>
+            </record>
+            <!-- FIN PARTE 2 -->
+
         <!-- PARTE 3: MENÚ -->
-            <menuitem id="menu_empleados_main" name="Empleados" action="action_empleado"/>
+            <menuitem id="menu_empleados_main" name="ElectroPB" action="action_empleado"/>
             <menuitem id="menu_empleados_gestion" parent="menu_empleados_main" name="Gestionar"/>
-            <menuitem id="menu_empleados_perfiles" parent="menu_empleados_gestion" name="Perfiles" action="action_empleado"/>
+            <menuitem id="menu_empleados_empleados" parent="menu_empleados_gestion" name="Empleados" action="action_empleado" />
+            <menuitem id="menu_empleados_perfiles" parent="menu_empleados_empleados" name="Perfiles" action="action_empleado"/>
+            <menuitem id="menu_furgonetas_furgonetas" parent="menu_empleados_gestion" name="Furgonetas" action="action_furgoneta" />
+            <menuitem id="menu_furgonetas_datos" parent="menu_furgonetas_furgonetas" name="Datos" action="action_furgoneta" />
         <!-- FIN PARTE 3 -->
- 
+
     </data>
 </openerp>
