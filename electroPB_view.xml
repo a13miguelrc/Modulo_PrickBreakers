@@ -39,16 +39,15 @@
                 </field>
             </record>
             <!-- Declaracion de la vista kanban-->
-            <record model="ir.ui.view" id="view_openacad_session_kanban">
-            <field name="name">openacad.session.kanban</field>
-            <field name="model">openacademy.session</field>
+            <record model="ir.ui.view" id="empleados_kanban">
+            <field name="name">empleado</field>
+            <field name="model">empleados.empleado</field>
             <field name="arch" type="xml">
-                <kanban default_group_by="course_id">
+                <kanban default_group_by="empleado_id">
                     <field name="color"/>
                     <templates>
                         <t t-name="kanban-box">
-                            <div
-                                    t-attf-class="oe_kanban_color_{{kanban_getcolor(record.color.raw_value)}}
+                            <div t-attf-class="oe_kanban_color_{{kanban_getcolor(record.color.raw_value)}}
                                                   oe_kanban_global_click_edit oe_semantic_html_override
                                                   oe_kanban_card {{record.group_fancy==1 ? 'oe_kanban_card_fancy' : ''}}">
                                 <div class="oe_dropdown_kanban">
