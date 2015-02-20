@@ -38,7 +38,8 @@
                     </tree>
                 </field>
             </record>
-            <!-- Declaracion de la vista kanban-->
+        <!--
+
             <record model="ir.ui.view" id="empleados_kanban">
             <field name="name">empleado</field>
             <field name="model">empleados.empleado</field>
@@ -51,7 +52,7 @@
                                                   oe_kanban_global_click_edit oe_semantic_html_override
                                                   oe_kanban_card {{record.group_fancy==1 ? 'oe_kanban_card_fancy' : ''}}">
                                 <div class="oe_dropdown_kanban">
-                                    <!-- dropdown menu -->
+
                                     <div class="oe_dropdown_toggle">
                                         <span class="oe_e">#</span>
                                         <ul class="oe_dropdown_menu">
@@ -67,7 +68,7 @@
                                     <div class="oe_clear"></div>
                                 </div>
                                 <div t-attf-class="oe_kanban_content">
-                                    <!-- title -->
+
                                     Session name:
                                     <field name="name"/>
                                     <br/>
@@ -83,7 +84,7 @@
                 </kanban>
             </field>
         </record>
-
+-->
         <!-- FIN PARTE 1 -->
          
         <!-- PARTE 2: ACCIONES -->
@@ -103,15 +104,17 @@
                 <field name="type">form</field>
                 <field name="arch" type="xml">
                     <form string="Furgonetas">
-                        <field name="marca" />
-                        <field name="modelo" />
-                        <field name="matricula" />
+                        <group col='2' colspan='2'>
+                            <field name="marca" />
+                            <field name="modelo" />
+                            <field name="matricula" />
+                        </group>
                     </form>
                 </field>
             </record>
 
             <!-- Declaración de la vista tree -->
-            <record model="ir.ui.view" id="furgonetas_form">
+            <record model="ir.ui.view" id="furgonetas_tree">
                 <field name="name">furgoneta</field>
                 <field name="model">furgonetas.furgoneta</field>
                 <field name="type">tree</field>
@@ -125,6 +128,7 @@
             </record>
 
              <!-- Declaracion de la vista kanban-->
+        <!--
             <record model="ir.ui.view" id="furgonetas_kanban">
             <field name="name">furgoneta</field>
             <field name="model">furgonetas.furgonetao</field>
@@ -137,7 +141,7 @@
                                                   oe_kanban_global_click_edit oe_semantic_html_override
                                                   oe_kanban_card {{record.group_fancy==1 ? 'oe_kanban_card_fancy' : ''}}">
                                 <div class="oe_dropdown_kanban">
-                                    <!-- dropdown menu -->
+
                                     <div class="oe_dropdown_toggle">
                                         <span class="oe_e">#</span>
                                         <ul class="oe_dropdown_menu">
@@ -153,7 +157,7 @@
                                     <div class="oe_clear"></div>
                                 </div>
                                 <div t-attf-class="oe_kanban_content">
-                                    <!-- title -->
+
                                     Session name:
                                     <field name="name"/>
                                     <br/>
@@ -169,7 +173,7 @@
                 </kanban>
             </field>
         </record>
-
+        -->
             <!-- PARTE 2: ACCIONES -->
             <record model="ir.actions.act_window" id="action_furgoneta">
                 <field name="name">furgoneta</field>
