@@ -31,11 +31,24 @@ class Furgoneta(orm.Model):
     SELECTION_LIST_3 = (('MR1','Kangoo'), ('MR2','Traffic'))
     _columns = {
         'marca':fields.selection((('marca1', 'Volkswagen'), ('marca2', 'Ford'), ('marca3', 'Renault')), 'Marca'),
-        'modelo':fields.selection((('modelo1', 'Caddy'), ('modelo2', 'Transit'), ('modelo3', 'Kangoo')), 'Modelo'),
+        'modelo':fields.selection(get_selection,'Modelo'),
         'matricula':fields.char('Matricula', size=8),
         'image': fields.binary('Imagen', help='Seleccionar imagen aqui')
     }
 Furgoneta()
+
+def _set_list_data(self,cr,uid,selected,context=None):
+        if selected == 'selection1':
+            SELECTION_LIST = SELECTION_LIST_2
+            vals = {'type_selection_2': SELECTION_LIST_2}
+            return {'type_selection_2': SELECTION_LIST_2}
+        else:
+            vals = {'type_selection_2': SELECTION_LIST_3}
+            SELECTION_LIST = SELECTION_LIST_3
+            return {'type_selection_2': SELECTION_LIST_3}
+
+def _get_selection(self, cr, uid, context=None):
+        return SELECTION_LIST
 
 #HojaDeServicio
 #class HojaServicio(orm.Model):
