@@ -22,7 +22,7 @@ class Empleado(orm.Model):
 Empleado()
 
 #FlotaFurgonetas
-class Furgoneta(orm.model):
+class Furgoneta(orm.Model):
     _name = 'furgonetas.furgoneta'
     _colums = {
         'marca':fields.selection((('marca1', 'Volkswagen'), ('marca2', 'Ford'), ('marca3', 'Renault')), 'Marca'),
