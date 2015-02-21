@@ -49,13 +49,13 @@
                    <kanban>
                        <templates>
                            <t t-name="kanban-box">
-                              <div class="oe_employee_vignette">
+                              <div class="oe_resource_vignette">
                                   <div class="oe_resource_image">
                                       <a type="open">
-                                          <img t-att-src="kanban_image('empleados.empleado', 'image', 'record.id.value')" class="oe_employee_picture" />
+                                          <img t-att-src="kanban_image('empleados.empleado', 'image', 'record.id.value')" class="oe_resource_picture" />
                                       </a>
                                   </div>
-                                  <div class="oe_employee_details">
+                                  <div class="oe_resource_details">
                                       <ul>
                                           <li><field name="nombre"/></li>
                                           <li><field name="telefono"/></li>
