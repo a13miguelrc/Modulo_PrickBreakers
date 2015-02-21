@@ -51,7 +51,9 @@
                        <templates>
                            <t t-name="kanban_box">
                                <div>
-                                   <img src='<field name="image"/>' />
+                                   <img>
+                                       <field name="image"/>
+                                   </img>
                                </div>
                                <div>
                                    <span>
@@ -92,7 +94,7 @@
                 <field name="name">empleado</field>
                 <field name="res_model">empleados.empleado</field>
                 <field name="view_type">form</field>
-                <field name="view_mode">tree,form</field>
+                <field name="view_mode">tree,form,kanban</field>
             </record>
         <!-- FIN ACCIONES EMPLEADO -->
 

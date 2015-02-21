@@ -36,11 +36,11 @@ class Furgoneta(orm.Model):
             SELECTION_LIST = SELECTION_LIST_1
             vals = {'modelo': SELECTION_LIST_1}
             return {'modelo': SELECTION_LIST_1}
-        if selected == 'marca2':
+        elif selected == 'marca2':
             SELECTION_LIST = SELECTION_LIST_2
             vals = {'modelo': SELECTION_LIST_2}
             return {'modelo': SELECTION_LIST_2}
-        if selected == 'marca3':
+        elif selected == 'marca3':
             SELECTION_LIST = SELECTION_LIST_3
             vals = {'modelo': SELECTION_LIST_3}
             return {'modelo': SELECTION_LIST_3}
