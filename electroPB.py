@@ -23,13 +23,14 @@ Empleado()
 
 #FlotaFurgonetas
 
+SELECTION_LIST = (('A','a'),('B','b'))
+SELECTION_LIST_1 = (('MV1','Caddy'), ('MV2','Transporter'))
+SELECTION_LIST_2 = (('MF1','Transit'), ('MF2','Tourneo'))
+SELECTION_LIST_3 = (('MR1','Kangoo'), ('MR2','Traffic'))
+
+
 
 class Furgoneta(orm.Model):
-    _name = 'furgonetas.furgoneta'
-    SELECTION_LIST = (('A','a'),('B','b'))
-    SELECTION_LIST_1 = (('MV1','Caddy'), ('MV2','Transporter'))
-    SELECTION_LIST_2 = (('MF1','Transit'), ('MF2','Tourneo'))
-    SELECTION_LIST_3 = (('MR1','Kangoo'), ('MR2','Traffic'))
     def _set_list_data(self,cr,uid,selected,context=None):
         if selected == 'marca1':
             SELECTION_LIST = SELECTION_LIST_1
@@ -46,6 +47,7 @@ class Furgoneta(orm.Model):
 
     def _get_selection(self, cr, uid, context=None):
         return SELECTION_LIST
+    _name = 'furgonetas.furgoneta'
     _columns = {
         'marca':fields.selection((('marca1', 'Volkswagen'), ('marca2', 'Ford'), ('marca3', 'Renault')), 'Marca'),
         'modelo':fields.selection(_get_selection,'Modelo'),
