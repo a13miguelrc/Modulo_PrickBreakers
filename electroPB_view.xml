@@ -49,7 +49,7 @@
                    <kanban>
                        <field name = "name"/>
                        <templates>
-                           <t t-name="kanban-box">
+                           <t t-name="kanban_box">
                                <div>
                                    <img src='<field name="image"/>' />
                                </div>
