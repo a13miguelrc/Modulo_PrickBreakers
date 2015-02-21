@@ -22,6 +22,7 @@
                     </form>
                 </field>
             </record>
+
             <!-- Declaración de la vista de árbol-->
             <record model="ir.ui.view" id="empleados_tree">
                 <field name="name">empleado</field>
@@ -38,6 +39,40 @@
                     </tree>
                 </field>
             </record>
+
+            <!-- Declaración de la vista de kanban-->
+            <record model="ir.ui.view" id="empleados_kanban">
+                <field name="name">empleado</field>
+                <field name="model">empleados.empleado</field>
+                <field name="type">kanban</field>
+                <field name="arch" type="xml">
+                   <kanban>
+                       <field name = "name"/>
+                       <templates>
+                           <t t-name="kanban-box">
+                               <div>
+                                   <span>
+                                       <h2>
+                                           <field name="marca" />
+                                       </h2>
+                                   </span>
+                                   <span>
+                                       <h3>
+                                           <field name="modelo" />
+                                       </h3>
+                                   </span>
+                                   <span>
+                                       <h3>
+                                           <field name="matricula" />
+                                       </h3>
+                                   </span>
+                               </div>
+                           </t>
+                       </templates>
+                   </kanban>
+                </field>
+            </record>
+
         <!-- FIN VISTAS EMPLEADO -->
          
         <!-- EMPLEADO: ACCIONES -->
@@ -80,16 +115,16 @@
                     </tree>
                 </field>
             </record>
-            <!-- FIN VISTAS FURGONETA -->
+        <!-- FIN VISTAS FURGONETA -->
 
-            <!-- FURGONETA: ACCIONES -->
+        <!-- FURGONETA: ACCIONES -->
             <record model="ir.actions.act_window" id="action_furgoneta">
                 <field name="name">furgoneta</field>
                 <field name="res_model">furgonetas.furgoneta</field>
                 <field name="view_type">form</field>
                 <field name="view_mode">tree,form</field>
             </record>
-            <!-- FIN ACCIONES FURGONETA -->
+        <!-- FIN ACCIONES FURGONETA -->
 
 
 
