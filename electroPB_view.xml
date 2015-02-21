@@ -228,6 +228,6 @@
             <menuitem id="menu_hojas_hojas" parent="menu_empleados_gestion" name="Hojas de Servicio" action="action_hoja" />
             <menuitem id="menu_hojas_datos" parent="menu_hojas_hojas" name="Datos" action="action_hoja" />
         <!-- FIN MENU -->
-
+<!--FIN-->
     </data>
 </openerp>
