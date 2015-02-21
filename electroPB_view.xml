@@ -47,40 +47,25 @@
                 <field name="type">kanban</field>
                 <field name="arch" type="xml">
                    <kanban>
-                       <field name = "name"/>
                        <templates>
-                           <t t-name="kanban_box">
-                               <div>
-                                   <img>
-                                       <field name="image"/>
-                                   </img>
-                               </div>
-                               <div>
-                                   <span>
-                                       <h2>
-                                           <field name="nif" />
-                                       </h2>
-                                   </span>
-                                   <span>
-                                       <h3>
-                                           <field name="nombre" />
-                                       </h3>
-                                   </span>
-                                   <span>
-                                       <h3>
-                                           <field name="apellidos" />
-                                       </h3>
-                                   </span>
-                                   <span>
-                                       <field name="direccion" />
-                                   </span>
-                                   <span>
-                                       <field name="fecha_nacimiento" />
-                                   </span>
-                                   <span>
-                                       <field name="telefono" />
-                                   </span>
-                               </div>
+                           <t t-name="kanban-box">
+                              <div class="oe_resource_vignette">
+                                  <div class="oe_resource_image">
+                                      <a type="edit">
+                                          <img t-att-src="kanban-image('object.name', 'image', 'record.id.value')" class="oe_resource_picture" />
+                                      </a>
+                                  </div>
+                                  <div class="oe_resource_details">
+                                      <ul>
+                                          <li><field name="nif"/></li>
+                                          <li><field name="nombre"/></li>
+                                          <li><field name="apellidos"/></li>
+                                          <li><field name="direccion"/></li>
+                                          <li><field name="fecha_nacimiento"/></li>
+                                          <li><field name="telefono"/></li>
+                                      </ul>
+                                  </div>
+                              </div>
                            </t>
                        </templates>
                    </kanban>
