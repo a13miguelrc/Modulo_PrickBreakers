@@ -26,33 +26,34 @@ Empleado()
 
 class Furgoneta(orm.Model):
     _name = 'furgonetas.furgoneta'
+    SELECTION_LIST = (('A','a'),('B','b'))
     SELECTION_LIST_1 = (('MV1','Caddy'), ('MV2','Transporter'))
     SELECTION_LIST_2 = (('MF1','Transit'), ('MF2','Tourneo'))
     SELECTION_LIST_3 = (('MR1','Kangoo'), ('MR2','Traffic'))
+    def _set_list_data(self,cr,uid,selected,context=None):
+        if selected == 'marca1':
+            SELECTION_LIST = SELECTION_LIST_1
+            vals = {'modelo': SELECTION_LIST_1}
+            return {'modelo': SELECTION_LIST_1}
+        if selected == 'marca2':
+            SELECTION_LIST = SELECTION_LIST_2
+            vals = {'modelo': SELECTION_LIST_2}
+            return {'modelo': SELECTION_LIST_2}
+        if selected == 'marca3':
+            SELECTION_LIST = SELECTION_LIST_3
+            vals = {'modelo': SELECTION_LIST_3}
+            return {'modelo': SELECTION_LIST_3}
+
+    def _get_selection(self, cr, uid, context=None):
+        return SELECTION_LIST
     _columns = {
         'marca':fields.selection((('marca1', 'Volkswagen'), ('marca2', 'Ford'), ('marca3', 'Renault')), 'Marca'),
-        'modelo':fields.selection(get_selection,'Modelo'),
+        'modelo':fields.selection(_get_selection,'Modelo'),
         'matricula':fields.char('Matricula', size=8),
         'image': fields.binary('Imagen', help='Seleccionar imagen aqui')
     }
 Furgoneta()
 
-def _set_list_data(self,cr,uid,selected,context=None):
-        if selected == 'marca1':
-            SELECTION_LIST = SELECTION_LIST_1
-            vals = {'type_selection_1': SELECTION_LIST_1}
-            return {'type_selection_1': SELECTION_LIST_1}
-        if selected == 'marca2':
-            SELECTION_LIST = SELECTION_LIST_2
-            vals = {'type_selection_2': SELECTION_LIST_2}
-            return {'type_selection_2': SELECTION_LIST_2}
-        if selected == 'marca3':
-            SELECTION_LIST = SELECTION_LIST_3
-            vals = {'type_selection_3': SELECTION_LIST_3}
-            return {'type_selection_3': SELECTION_LIST_3}
-
-def _get_selection(self, cr, uid, context=None):
-        return SELECTION_LIST
 
 #HojaDeServicio
 #class HojaServicio(orm.Model):
@@ -75,6 +76,6 @@ def _get_selection(self, cr, uid, context=None):
 #        'ubicacion':fields.selection((('D','A Domicilio'), ('T','Taller')),'Ubicacion'),
 #        'electrodomestico':fields.char('Electrodomestico',size=40),
 #        'descripcion':fields.char('Descripcion',size=120),
-#        'direccion':fields.char('Direccion',size=50),
+#        'direccion':fields.char('Direccion',size=50)
 #    }
 #Servicio()

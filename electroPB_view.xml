@@ -2,7 +2,7 @@
 <openerp>
     <data>
      
-        <!-- PARTE 1: SECCIÓN CON LAS VISTAS -->
+        <!-- EMPLEADO: SECCIÓN CON LAS VISTAS -->
             <!-- Declaración del formulario -->
             <record model="ir.ui.view" id="empleados_form">
                 <field name="name">empleado</field>
@@ -38,18 +38,18 @@
                     </tree>
                 </field>
             </record>
-        <!-- FIN PARTE 1 -->
+        <!-- FIN VISTAS EMPLEADO -->
          
-        <!-- PARTE 2: ACCIONES -->
+        <!-- EMPLEADO: ACCIONES -->
             <record model="ir.actions.act_window" id="action_empleado">
                 <field name="name">empleado</field>
                 <field name="res_model">empleados.empleado</field>
                 <field name="view_type">form</field>
-                <field name="view_mode">tree,form,canvas</field>
+                <field name="view_mode">tree,form</field>
             </record>
-        <!-- FIN PARTE 2 -->
+        <!-- FIN ACCIONES EMPLEADO -->
 
-        <!-- PARTE 1: SECCIÓN CON LAS VISTAS -->
+        <!-- FURGONETA: SECCIÓN CON LAS VISTAS -->
             <!-- Declaración del formulario -->
             <record model="ir.ui.view" id="furgonetas_form">
                 <field name="name">furgoneta</field>
@@ -68,7 +68,7 @@
             </record>
 
             <!-- Declaración de la vista tree -->
-            <record model="ir.ui.view" id="furgonetas_form">
+            <record model="ir.ui.view" id="furgonetas_tree">
                 <field name="name">furgoneta</field>
                 <field name="model">furgonetas.furgoneta</field>
                 <field name="type">tree</field>
@@ -80,23 +80,124 @@
                     </tree>
                 </field>
             </record>
-            <!-- PARTE 2: ACCIONES -->
+            <!-- FIN VISTAS FURGONETA -->
+
+            <!-- FURGONETA: ACCIONES -->
             <record model="ir.actions.act_window" id="action_furgoneta">
                 <field name="name">furgoneta</field>
                 <field name="res_model">furgonetas.furgoneta</field>
                 <field name="view_type">form</field>
-                <field name="view_mode">tree,form,canvas</field>
+                <field name="view_mode">tree,form</field>
             </record>
-            <!-- FIN PARTE 2 -->
+            <!-- FIN ACCIONES FURGONETA -->
 
-        <!-- PARTE 3: MENÚ -->
+
+
+
+        <!-- SERVICIO: SECCIÓN CON LAS VISTAS -->
+            <!-- Declaración del formulario -->
+            <!--<record model="ir.ui.view" id="servicios_form">
+                <field name="name">servicio</field>
+                <field name="model">servicios.servicio</field>
+                <field name="type">form</field>
+                <field name="arch" type="xml">
+                    <form string="Servicios">
+                        <group col='2' colspan='2'>
+                            <field name="codigo" />
+                            <field name="tipo" />
+                            <field name="ubicacion" />
+                            <field name="electrodomestico" />
+                            <field name="descripcion" />
+                            <field name="direccion" />
+                        </group>
+                    </form>
+                </field>
+            </record>-->
+
+            <!-- Declaración de la vista tree -->
+            <!--<record model="ir.ui.view" id="servicios_tree">
+                <field name="name">furgoneta</field>
+                <field name="model">furgonetas.furgoneta</field>
+                <field name="type">tree</field>
+                <field name="arch" type="xml">
+                    <tree string="Furgonetas">
+                        <field name="codigo" />
+                        <field name="tipo" />
+                        <field name="ubicacion" />
+                        <field name="electrodomestico" />
+                        <field name="descripcion" />
+                        <field name="direccion" />
+                    </tree>
+                </field>
+            </record>-->
+            <!-- FIN VISTAS SERVICIO -->
+
+            <!-- SERVICIO: ACCIONES -->
+            <!--<record model="ir.actions.act_window" id="action_servicio">
+                <field name="name">servicio</field>
+                <field name="res_model">servicios.servicio</field>
+                <field name="view_type">form</field>
+                <field name="view_mode">tree,form</field>
+            </record>-->
+            <!-- FIN ACCIONES SERVICIO -->
+
+        <!-- HOJASERVICIO: SECCIÓN CON LAS VISTAS -->
+            <!-- Declaración del formulario -->
+            <!--<record model="ir.ui.view" id="hojas_form">
+                <field name="name">hoja</field>
+                <field name="model">hojas.hoja</field>
+                <field name="type">form</field>
+                <field name="arch" type="xml">
+                    <form string="HojaDeServicio">
+                        <group col='2' colspan='2'>
+                            <field name="empleado_id" />
+                            <field name="hora_salida" />
+                            <field name="hora_llegada" />
+                            <field name="furgoneta_id" />
+                            <field name="servicio_id" />
+                        </group>
+                    </form>
+                </field>
+            </record>-->
+
+            <!-- Declaración de la vista tree -->
+            <!--<record model="ir.ui.view" id="hojas_tree">
+                <field name="name">hoja</field>
+                <field name="model">hojas.hoja</field>
+                <field name="type">tree</field>
+                <field name="arch" type="xml">
+                    <tree string="HojaDeServicio">
+                        <field name="empleado_id" />
+                        <field name="hora_salida" />
+                        <field name="hora_llegada" />
+                        <field name="furgoneta_id" />
+                        <field name="servicio_id" />
+                    </tree>
+                </field>
+            </record>-->
+            <!-- FIN VISTAS HOJASERVICIO -->
+
+            <!-- HOJASERVICIO: ACCIONES -->
+            <!--<record model="ir.actions.act_window" id="action_hoja">
+                <field name="name">hoja</field>
+                <field name="res_model">hojas.hoja</field>
+                <field name="view_type">form</field>
+                <field name="view_mode">tree,form</field>
+            </record>-->
+            <!-- FIN ACCIONES HOJASERVICIO -->
+
+        <!-- MENÚ -->
             <menuitem id="menu_empleados_main" name="ElectroPB" action="action_empleado"/>
             <menuitem id="menu_empleados_gestion" parent="menu_empleados_main" name="Gestionar"/>
             <menuitem id="menu_empleados_empleados" parent="menu_empleados_gestion" name="Empleados" action="action_empleado" />
             <menuitem id="menu_empleados_perfiles" parent="menu_empleados_empleados" name="Perfiles" action="action_empleado"/>
             <menuitem id="menu_furgonetas_furgonetas" parent="menu_empleados_gestion" name="Furgonetas" action="action_furgoneta" />
             <menuitem id="menu_furgonetas_datos" parent="menu_furgonetas_furgonetas" name="Datos" action="action_furgoneta" />
-        <!-- FIN PARTE 3 -->
+            <!--<menuitem id="menu_servicios_servicios" parent="menu_empleados_gestion" name="Servicios" action="action_servicio" />
+            <menuitem id="menu_servicios_datos" parent="menu_servicios_servicios" name="Datos" action="action_servicio" />
+            <menuitem id="menu_hojas_hojas" parent="menu_empleados_gestion" name="Hojas de Servicio" action="action_hoja" />
+            <menuitem id="menu_hojas_datos" parent="menu_hojas_hojas" name="Datos" action="action_hoja" />-->
+        <!-- FIN MENU -->
 
     </data>
 </openerp>
