@@ -46,32 +46,28 @@
                 <field name="model">empleados.empleado</field>
                 <field name="type">kanban</field>
                 <field name="arch" type="xml">
-                   <kanban>
-                       <templates>
-                           <t t-name="kanban-box">
-                              <div class="oe_resource_vignette">
-                                  <div class="oe_resource_image">
-                                      <a type="edit">
-                                          <img t-att-src="kanban-image('object.name', 'image', 'record.id.value')" class="oe_resource_picture" />
-                                      </a>
-                                  </div>
-                                  <div class="oe_resource_details">
-                                      <ul>
-                                          <li><field name="nif"/></li>
-                                          <li><field name="nombre"/></li>
-                                          <li><field name="apellidos"/></li>
-                                          <li><field name="direccion"/></li>
-                                          <li><field name="fecha_nacimiento"/></li>
-                                          <li><field name="telefono"/></li>
-                                      </ul>
-                                  </div>
-                              </div>
-                           </t>
-                       </templates>
-                   </kanban>
+                    <kanban>
+                        <field name="image"/>
+                        <templates>
+                            <t t-name="kanban-box">
+                                <div class="oe_resource_vignette">
+                                    <div class="oe_resource_image" style="width: 200px; height: 200px;">
+                                        <a type="open">
+                                            <img t-att-src="kanban_image('empleados.empleado', 'image', 'record.id.value')" class="oe_resource_photo" style="width: 200px; height: 200px;" />
+                                        </a>
+                                    </div>
+                                    <div class="oe_resource_details">
+                                        <ul>
+                                            <li><field name="nombre"/></li>
+                                            <li><field name="telefono"/></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </t>
+                        </templates>
+                    </kanban>
                 </field>
             </record>
-
         <!-- FIN VISTAS EMPLEADO -->
          
         <!-- EMPLEADO: ACCIONES -->
@@ -130,7 +126,7 @@
 
         <!-- SERVICIO: SECCIÓN CON LAS VISTAS -->
             <!-- Declaración del formulario -->
-            <!--<record model="ir.ui.view" id="servicios_form">
+            <record model="ir.ui.view" id="servicios_form">
                 <field name="name">servicio</field>
                 <field name="model">servicios.servicio</field>
                 <field name="type">form</field>
@@ -146,12 +142,12 @@
                         </group>
                     </form>
                 </field>
-            </record>-->
+            </record>
 
             <!-- Declaración de la vista tree -->
-            <!--<record model="ir.ui.view" id="servicios_tree">
-                <field name="name">furgoneta</field>
-                <field name="model">furgonetas.furgoneta</field>
+            <record model="ir.ui.view" id="servicios_tree">
+                <field name="name">servicio</field>
+                <field name="model">servicios.servicio</field>
                 <field name="type">tree</field>
                 <field name="arch" type="xml">
                     <tree string="Furgonetas">
@@ -163,21 +159,21 @@
                         <field name="direccion" />
                     </tree>
                 </field>
-            </record>-->
+            </record>
             <!-- FIN VISTAS SERVICIO -->
 
             <!-- SERVICIO: ACCIONES -->
-            <!--<record model="ir.actions.act_window" id="action_servicio">
+            <record model="ir.actions.act_window" id="action_servicio">
                 <field name="name">servicio</field>
                 <field name="res_model">servicios.servicio</field>
                 <field name="view_type">form</field>
                 <field name="view_mode">tree,form</field>
-            </record>-->
+            </record>
             <!-- FIN ACCIONES SERVICIO -->
 
         <!-- HOJASERVICIO: SECCIÓN CON LAS VISTAS -->
             <!-- Declaración del formulario -->
-            <!--<record model="ir.ui.view" id="hojas_form">
+            <record model="ir.ui.view" id="hojas_form">
                 <field name="name">hoja</field>
                 <field name="model">hojas.hoja</field>
                 <field name="type">form</field>
@@ -192,10 +188,10 @@
                         </group>
                     </form>
                 </field>
-            </record>-->
+            </record>
 
             <!-- Declaración de la vista tree -->
-            <!--<record model="ir.ui.view" id="hojas_tree">
+            <record model="ir.ui.view" id="hojas_tree">
                 <field name="name">hoja</field>
                 <field name="model">hojas.hoja</field>
                 <field name="type">tree</field>
@@ -208,16 +204,16 @@
                         <field name="servicio_id" />
                     </tree>
                 </field>
-            </record>-->
+            </record>
             <!-- FIN VISTAS HOJASERVICIO -->
 
             <!-- HOJASERVICIO: ACCIONES -->
-            <!--<record model="ir.actions.act_window" id="action_hoja">
+            <record model="ir.actions.act_window" id="action_hoja">
                 <field name="name">hoja</field>
                 <field name="res_model">hojas.hoja</field>
                 <field name="view_type">form</field>
                 <field name="view_mode">tree,form</field>
-            </record>-->
+            </record>
             <!-- FIN ACCIONES HOJASERVICIO -->
 
         <!-- MENÚ -->
@@ -227,10 +223,10 @@
             <menuitem id="menu_empleados_perfiles" parent="menu_empleados_empleados" name="Perfiles" action="action_empleado"/>
             <menuitem id="menu_furgonetas_furgonetas" parent="menu_empleados_gestion" name="Furgonetas" action="action_furgoneta" />
             <menuitem id="menu_furgonetas_datos" parent="menu_furgonetas_furgonetas" name="Datos" action="action_furgoneta" />
-            <!--<menuitem id="menu_servicios_servicios" parent="menu_empleados_gestion" name="Servicios" action="action_servicio" />
+            <menuitem id="menu_servicios_servicios" parent="menu_empleados_gestion" name="Servicios" action="action_servicio" />
             <menuitem id="menu_servicios_datos" parent="menu_servicios_servicios" name="Datos" action="action_servicio" />
             <menuitem id="menu_hojas_hojas" parent="menu_empleados_gestion" name="Hojas de Servicio" action="action_hoja" />
-            <menuitem id="menu_hojas_datos" parent="menu_hojas_hojas" name="Datos" action="action_hoja" />-->
+            <menuitem id="menu_hojas_datos" parent="menu_hojas_hojas" name="Datos" action="action_hoja" />
         <!-- FIN MENU -->
 
     </data>

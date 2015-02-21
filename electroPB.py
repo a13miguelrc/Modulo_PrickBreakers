@@ -56,28 +56,27 @@ class Furgoneta(orm.Model):
     }
 Furgoneta()
 
+#Servicio
+class Servicio(orm.Model):
+    _name = 'servicios.servicio'
+    _columns = {
+        'codigo':fields.integer('Codigo'),
+        'tipo':fields.selection((('REP','Reparacion'), ('E','Entrega'), ('REC','Recogida')),'Tipo'),
+        'ubicacion':fields.selection((('D','A Domicilio'), ('T','Taller')),'Ubicacion'),
+        'electrodomestico':fields.char('Electrodomestico',size=40),
+        'descripcion':fields.char('Descripcion',size=120),
+        'direccion':fields.char('Direccion',size=50)
+    }
+Servicio()
 
 #HojaDeServicio
-#class HojaServicio(orm.Model):
-#    _name = 'hojas.hoja'
-#    _columns = {
-#        'empleado_id':fields.many2one('empleados.empleado','Empleado'),
-#        'hora_salida':fields.date('Hora salida'),
-#        'hora_llegada':fields.date('Hora llegada'),
-#        'furgoneta_id':fields.many2one('furgonetas.furgoneta','Furgoneta'),
-#        'servicio_id':fields.one2manyfields.one2many('servicios.servicio.descripcion','servicios.servicio_id','Servicios')
-#    }
-#HojaServicio()
-
-#Servicio
-#class Servicio(orm.Model):
-#   _name = 'servicios.servicio'
-#    _columns = {
-#        'codigo':fields.integer('Codigo'),
-#        'tipo':fields.selection((('REP','Reparacion'), ('E','Entrega'), ('REC','Recogida')),'Tipo'),
-#        'ubicacion':fields.selection((('D','A Domicilio'), ('T','Taller')),'Ubicacion'),
-#        'electrodomestico':fields.char('Electrodomestico',size=40),
-#        'descripcion':fields.char('Descripcion',size=120),
-#        'direccion':fields.char('Direccion',size=50)
-#    }
-#Servicio()
+class HojaServicio(orm.Model):
+    _name = 'hojas.hoja'
+    _columns = {
+        'empleado_id':fields.many2one('empleados.empleado','Empleado'),
+        'hora_salida':fields.date('Hora salida'),
+        'hora_llegada':fields.date('Hora llegada'),
+        'furgoneta_id':fields.many2one('furgonetas.furgoneta','Furgoneta'),
+        'servicio_id':fields.one2many('servicios.servicio.descripcion','servicios.servicio_id','Servicios')
+    }
+HojaServicio()
