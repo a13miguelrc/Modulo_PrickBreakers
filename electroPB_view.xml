@@ -51,20 +51,32 @@
                        <templates>
                            <t t-name="kanban-box">
                                <div>
+                                   <img src='<field name="image"/>' />
+                               </div>
+                               <div>
                                    <span>
                                        <h2>
-                                           <field name="marca" />
+                                           <field name="nif" />
                                        </h2>
                                    </span>
                                    <span>
                                        <h3>
-                                           <field name="modelo" />
+                                           <field name="nombre" />
                                        </h3>
                                    </span>
                                    <span>
                                        <h3>
-                                           <field name="matricula" />
+                                           <field name="apellidos" />
                                        </h3>
+                                   </span>
+                                   <span>
+                                       <field name="direccion" />
+                                   </span>
+                                   <span>
+                                       <field name="fecha_nacimiento" />
+                                   </span>
+                                   <span>
+                                       <field name="telefono" />
                                    </span>
                                </div>
                            </t>
