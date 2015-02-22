@@ -142,6 +142,36 @@
                     </tree>
                 </field>
             </record>
+            
+            <!-- Declaración de la vista de kanban-->
+            <record model="ir.ui.view" id="empleados_kanban">
+                <field name="name">Furgoneta</field>
+                <field name="model">furgonetas.furgoneta</field>
+                <field name="type">kanban</field>
+                <field name="arch" type="xml">
+                    <kanban>
+                        <field name="image"/>
+                        <templates>
+                            <t t-name="kanban-box">
+                                <div class="oe_resource_vignette">
+                                    <div class="oe_resource_image" style="width: 200px; height: 200px;" >
+                                        <a type="open">
+                                            <img t-att-src="kanban_image('furgonetas.furgoneta', 'image', 'record.id.value')" class="oe_resource_photo" style="width: 200px; height: 200px; margin-left:20px; margin-top:15px;" />
+                                        </a>
+                                    </div>
+                                    <div class="oe_resource_details" style="width: 200px; height: 200px; margin-left:20px; margin-top:15px; text-align: center;">
+                                        <ul>
+                                            <li><field name="marca"/></li>
+                                            <li><field name="matricula"/></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </t>
+                        </templates>
+                    </kanban>
+                </field>
+            </record>
+
         <!-- FIN VISTAS FURGONETA -->
 
         <!-- FURGONETA: ACCIONES -->
@@ -149,7 +179,7 @@
                 <field name="name">Furgoneta</field>
                 <field name="res_model">furgonetas.furgoneta</field>
                 <field name="view_type">form</field>
-                <field name="view_mode">tree,form</field>
+                <field name="view_mode">tree,form,kanban</field>
             </record>
         <!-- FIN ACCIONES FURGONETA -->
 
