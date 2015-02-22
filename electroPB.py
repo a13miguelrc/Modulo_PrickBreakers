@@ -3,6 +3,7 @@ from openerp.osv import fields, orm
 #Empleado
 class Empleado(orm.Model):
     _name = 'empleados.empleado'
+    _rec_name = 'nombre' #Indica que campo es el que guarda para mostrar por defecto
     _columns = {
         'nif': fields.char('NIF', size=9, required=True),
         'nombre': fields.char('Nombre', size=20),
@@ -48,6 +49,7 @@ class Furgoneta(orm.Model):
     def _get_selection(self, cr, uid, context=None):
         return SELECTION_LIST
     _name = 'furgonetas.furgoneta'
+    _rec_name = 'modelo'
     _columns = {
         'marca':fields.selection((('marca1', 'Volkswagen'), ('marca2', 'Ford'), ('marca3', 'Renault')), 'Marca'),
         'modelo':fields.selection(_get_selection,'Modelo'),
@@ -59,13 +61,15 @@ Furgoneta()
 #Servicio
 class Servicio(orm.Model):
     _name = 'servicios.servicio'
+    _rec_name = 'codigo'
     _columns = {
         'codigo':fields.integer('Codigo'),
         'tipo':fields.selection((('REP','Reparacion'), ('E','Entrega'), ('REC','Recogida')),'Tipo'),
         'ubicacion':fields.selection((('D','A Domicilio'), ('T','Taller')),'Ubicacion'),
         'electrodomestico':fields.char('Electrodomestico',size=40),
         'descripcion':fields.char('Descripcion',size=120),
-        'direccion':fields.char('Direccion',size=50)
+        'direccion':fields.char('Direccion',size=50),
+        'hoja_id': fields.many2one('hojas.hoja', 'Hoja de Servicio')
     }
 Servicio()
 
@@ -77,6 +81,8 @@ class HojaServicio(orm.Model):
         'hora_salida':fields.date('Hora salida'),
         'hora_llegada':fields.date('Hora llegada'),
         'furgoneta_id':fields.many2one('furgonetas.furgoneta','Furgoneta'),
-        'servicio_id':fields.one2many('servicios.servicio.descripcion','servicios.servicio_id','Servicios')
+        'servicio_ids':fields.one2many('servicios.servicio','hoja_id','Servicios')
     }
 HojaServicio()
+
+

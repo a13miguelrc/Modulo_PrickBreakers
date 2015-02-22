@@ -5,7 +5,7 @@
         <!-- EMPLEADO: SECCIÓN CON LAS VISTAS -->
             <!-- Declaración del formulario -->
             <record model="ir.ui.view" id="empleados_form">
-                <field name="name">empleado</field>
+                <field name="name">Empleado</field>
                 <field name="model">empleados.empleado</field> <!--El modelo se corresponde con el nombre de la clase, en este caso la clase empleado.-->
                 <field name="type">form</field>
                 <field name="arch" type="xml">
@@ -25,7 +25,7 @@
 
             <!-- Declaración de la vista de árbol-->
             <record model="ir.ui.view" id="empleados_tree">
-                <field name="name">empleado</field>
+                <field name="name">Empleado</field>
                 <field name="model">empleados.empleado</field>
                 <field name="type">tree</field>
                 <field name="arch" type="xml">
@@ -42,13 +42,16 @@
 
             <!-- Declaración de la vista de kanban-->
             <record model="ir.ui.view" id="empleados_kanban">
-                <field name="name">empleado</field>
+                <field name="name">Empleado</field>
                 <field name="model">empleados.empleado</field>
                 <field name="type">kanban</field>
                 <field name="arch" type="xml">
                     <kanban>
                         <field name="image"/>
                         <templates>
+                            <xpath expr="." position="inside">
+                                <link rel="stylesheet" href="/Modulo_PrickBreakers/static/css/ElectroPB.css" />
+                            </xpath>
                             <t t-name="kanban-box">
                                 <div class="oe_resource_vignette">
                                     <div class="oe_resource_image" style="width: 200px; height: 200px;">
@@ -72,7 +75,7 @@
          
         <!-- EMPLEADO: ACCIONES -->
             <record model="ir.actions.act_window" id="action_empleado">
-                <field name="name">empleado</field>
+                <field name="name">Empleado</field>
                 <field name="res_model">empleados.empleado</field>
                 <field name="view_type">form</field>
                 <field name="view_mode">tree,form,kanban</field>
@@ -82,7 +85,7 @@
         <!-- FURGONETA: SECCIÓN CON LAS VISTAS -->
             <!-- Declaración del formulario -->
             <record model="ir.ui.view" id="furgonetas_form">
-                <field name="name">furgoneta</field>
+                <field name="name">Furgoneta</field>
                 <field name="model">furgonetas.furgoneta</field>
                 <field name="type">form</field>
                 <field name="arch" type="xml">
@@ -99,7 +102,7 @@
 
             <!-- Declaración de la vista tree -->
             <record model="ir.ui.view" id="furgonetas_tree">
-                <field name="name">furgoneta</field>
+                <field name="name">Furgoneta</field>
                 <field name="model">furgonetas.furgoneta</field>
                 <field name="type">tree</field>
                 <field name="arch" type="xml">
@@ -114,7 +117,7 @@
 
         <!-- FURGONETA: ACCIONES -->
             <record model="ir.actions.act_window" id="action_furgoneta">
-                <field name="name">furgoneta</field>
+                <field name="name">Furgoneta</field>
                 <field name="res_model">furgonetas.furgoneta</field>
                 <field name="view_type">form</field>
                 <field name="view_mode">tree,form</field>
@@ -127,7 +130,7 @@
         <!-- SERVICIO: SECCIÓN CON LAS VISTAS -->
             <!-- Declaración del formulario -->
             <record model="ir.ui.view" id="servicios_form">
-                <field name="name">servicio</field>
+                <field name="name">Servicio</field>
                 <field name="model">servicios.servicio</field>
                 <field name="type">form</field>
                 <field name="arch" type="xml">
@@ -139,6 +142,7 @@
                             <field name="electrodomestico" />
                             <field name="descripcion" />
                             <field name="direccion" />
+                            <field name="hoja_id" />
                         </group>
                     </form>
                 </field>
@@ -146,7 +150,7 @@
 
             <!-- Declaración de la vista tree -->
             <record model="ir.ui.view" id="servicios_tree">
-                <field name="name">servicio</field>
+                <field name="name">Servicio</field>
                 <field name="model">servicios.servicio</field>
                 <field name="type">tree</field>
                 <field name="arch" type="xml">
@@ -157,6 +161,7 @@
                         <field name="electrodomestico" />
                         <field name="descripcion" />
                         <field name="direccion" />
+                        <field name="hoja_id" />
                     </tree>
                 </field>
             </record>
@@ -164,7 +169,7 @@
 
             <!-- SERVICIO: ACCIONES -->
             <record model="ir.actions.act_window" id="action_servicio">
-                <field name="name">servicio</field>
+                <field name="name">Servicio</field>
                 <field name="res_model">servicios.servicio</field>
                 <field name="view_type">form</field>
                 <field name="view_mode">tree,form</field>
@@ -174,7 +179,7 @@
         <!-- HOJASERVICIO: SECCIÓN CON LAS VISTAS -->
             <!-- Declaración del formulario -->
             <record model="ir.ui.view" id="hojas_form">
-                <field name="name">hoja</field>
+                <field name="name">Hoja de Servicio</field>
                 <field name="model">hojas.hoja</field>
                 <field name="type">form</field>
                 <field name="arch" type="xml">
@@ -184,7 +189,7 @@
                             <field name="hora_salida" />
                             <field name="hora_llegada" />
                             <field name="furgoneta_id" />
-                            <field name="servicio_id" />
+                            <field name="servicio_ids" />
                         </group>
                     </form>
                 </field>
@@ -192,7 +197,7 @@
 
             <!-- Declaración de la vista tree -->
             <record model="ir.ui.view" id="hojas_tree">
-                <field name="name">hoja</field>
+                <field name="name">Hoja de Servicio</field>
                 <field name="model">hojas.hoja</field>
                 <field name="type">tree</field>
                 <field name="arch" type="xml">
@@ -201,7 +206,7 @@
                         <field name="hora_salida" />
                         <field name="hora_llegada" />
                         <field name="furgoneta_id" />
-                        <field name="servicio_id" />
+                        <field name="servicio_ids" />
                     </tree>
                 </field>
             </record>
@@ -209,7 +214,7 @@
 
             <!-- HOJASERVICIO: ACCIONES -->
             <record model="ir.actions.act_window" id="action_hoja">
-                <field name="name">hoja</field>
+                <field name="name">Hoja de Servicio</field>
                 <field name="res_model">hojas.hoja</field>
                 <field name="view_type">form</field>
                 <field name="view_mode">tree,form</field>
@@ -222,12 +227,12 @@
             <menuitem id="menu_empleados_empleados" parent="menu_empleados_gestion" name="Empleados" action="action_empleado" />
             <menuitem id="menu_empleados_perfiles" parent="menu_empleados_empleados" name="Perfiles" action="action_empleado"/>
             <menuitem id="menu_furgonetas_furgonetas" parent="menu_empleados_gestion" name="Furgonetas" action="action_furgoneta" />
-            <menuitem id="menu_furgonetas_datos" parent="menu_furgonetas_furgonetas" name="Datos" action="action_furgoneta" />
+            <menuitem id="menu_furgonetas_datos" parent="menu_furgonetas_furgonetas" name="Flota" action="action_furgoneta" />
             <menuitem id="menu_servicios_servicios" parent="menu_empleados_gestion" name="Servicios" action="action_servicio" />
-            <menuitem id="menu_servicios_datos" parent="menu_servicios_servicios" name="Datos" action="action_servicio" />
+            <menuitem id="menu_servicios_datos" parent="menu_servicios_servicios" name="Informacion" action="action_servicio" />
             <menuitem id="menu_hojas_hojas" parent="menu_empleados_gestion" name="Hojas de Servicio" action="action_hoja" />
-            <menuitem id="menu_hojas_datos" parent="menu_hojas_hojas" name="Datos" action="action_hoja" />
+            <menuitem id="menu_hojas_datos" parent="menu_hojas_hojas" name="Itinerario" action="action_hoja" />
         <!-- FIN MENU -->
-<!--FIN-->
+
     </data>
 </openerp>
