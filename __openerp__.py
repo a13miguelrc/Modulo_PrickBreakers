@@ -34,7 +34,7 @@
              'electroPB_view.xml'
              ],
     "demo_xml": [],
-    "css": "static/css/ElectroPB.css",
+    "css": "/Modulo_PrickBreakers/static/css/ElectroPB.css",
     "installable": True,
     "active": False,
 }
