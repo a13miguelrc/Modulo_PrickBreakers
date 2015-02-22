@@ -22,6 +22,7 @@
 {
     "name": "ElectroPB",
     "icon": "/Modulo_PrickBreakers/static/img/icon.png",
+    #"css": ['/Modulo_PrickBreakers/static/src/css/electroPB.css'],
     "version": "0.1",
     "category": "",
     "depends": [
@@ -34,7 +35,6 @@
              'electroPB_view.xml'
              ],
     "demo_xml": [],
-    "css": "/Modulo_PrickBreakers/static/css/ElectroPB.css",
     "installable": True,
     "active": False,
 }

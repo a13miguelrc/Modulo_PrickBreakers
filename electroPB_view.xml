@@ -49,17 +49,46 @@
                     <kanban>
                         <field name="image"/>
                         <templates>
-                            <xpath expr="." position="inside">
-                                <link rel="stylesheet" href="/Modulo_PrickBreakers/static/css/ElectroPB.css" />
-                            </xpath>
+                            <!--<xpath expr="." position="inside">
+                                <link rel="stylesheet" href="/Modulo_PrickBreakers/static/src/css/electroPB.css" />
+                            </xpath>-->
+                            <!--<style type="text/css">
+                                body {
+                                color: #000 !important;
+                                }
+                                .border-black td {
+                                border-top: 1px solid black !important;
+                                }
+                                .table-condensed > thead > tr > th {
+                                border-bottom: 1px solid black !important;
+                                }
+                                .zero_min_height {
+                                min-height: 0px !important;
+                                }
+                                .oe_resource_vignete{
+                                display: inline-block;
+                                padding: 20px;
+                                float: right:
+                                }
+                                
+                                .oe_resource_details{
+                                text-align: right;
+                                margin-left: 5px;
+                                }
+                                
+                                .oe_resource_photo, .oe_resource_picture{
+                                width: 62px;
+                                height: 62px;
+                                }
+                            </style>-->
                             <t t-name="kanban-box">
                                 <div class="oe_resource_vignette">
-                                    <div class="oe_resource_image" style="width: 200px; height: 200px;">
+                                    <div class="oe_resource_image" style="width: 200px; height: 200px;" >
                                         <a type="open">
-                                            <img t-att-src="kanban_image('empleados.empleado', 'image', 'record.id.value')" class="oe_resource_photo" style="width: 200px; height: 200px;" />
+                                            <img t-att-src="kanban_image('empleados.empleado', 'image', 'record.id.value')" class="oe_resource_photo" style="width: 200px; height: 200px; margin-left:20px; margin-top:15px;" />
                                         </a>
                                     </div>
-                                    <div class="oe_resource_details">
+                                    <div class="oe_resource_details" style="width: 200px; height: 200px; margin-left:20px; margin-top:15px; text-align: center;">
                                         <ul>
                                             <li><field name="nombre"/></li>
                                             <li><field name="telefono"/></li>
