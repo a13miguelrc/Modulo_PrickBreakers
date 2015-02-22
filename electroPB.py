@@ -24,38 +24,29 @@ Empleado()
 
 #FlotaFurgonetas
 
-SELECTION_LIST = (('A','a'),('B','b'))
 SELECTION_LIST_1 = (('MV1','Caddy'), ('MV2','Transporter'))
 SELECTION_LIST_2 = (('MF1','Transit'), ('MF2','Tourneo'))
 SELECTION_LIST_3 = (('MR1','Kangoo'), ('MR2','Traffic'))
 
-
-
 class Furgoneta(orm.Model):
-    def _set_list_data(self,cr,uid,selected,context=None):
-        if selected == 'marca1':
-            SELECTION_LIST = SELECTION_LIST_1
-            vals = {'modelo': SELECTION_LIST_1}
-            return {'modelo': SELECTION_LIST_1}
-        elif selected == 'marca2':
-            SELECTION_LIST = SELECTION_LIST_2
-            vals = {'modelo': SELECTION_LIST_2}
-            return {'modelo': SELECTION_LIST_2}
-        elif selected == 'marca3':
-            SELECTION_LIST = SELECTION_LIST_3
-            vals = {'modelo': SELECTION_LIST_3}
-            return {'modelo': SELECTION_LIST_3}
-
-    def _get_selection(self, cr, uid, context=None):
-        return SELECTION_LIST
     _name = 'furgonetas.furgoneta'
     _rec_name = 'modelo'
     _columns = {
         'marca':fields.selection((('marca1', 'Volkswagen'), ('marca2', 'Ford'), ('marca3', 'Renault')), 'Marca'),
-        'modelo':fields.selection(_get_selection,'Modelo'),
+        'modelo':fields.char('Modelo',size=20),
         'matricula':fields.char('Matricula', size=8),
         'image': fields.binary('Imagen', help='Seleccionar imagen aqui')
     }
+    def _set_list_data(self, cr, uid, ids, marca):
+        if marca == 'marca1':
+            v = {'modelo': 'Caddy'}
+            return {'value': v}
+        elif marca == 'marca2':
+            v = {'modelo': 'Transit'}
+            return {'value': v}
+        elif marca == 'marca3':
+            v = {'modelo': 'Kangoo'}
+            return {'value': v}
 Furgoneta()
 
 #Servicio
