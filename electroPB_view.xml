@@ -114,7 +114,7 @@
                         <field name="electrodomestico" />
                         <field name="descripcion" />
                         <field name="direccion" />
-                        <field nome="reparado" on_change="reparado_habilitar"/>
+                        <field nome="reparado" /> <!--on_change="reparado_habilitar"-->
                         <field name="hoja_id" />
                         <field name="cliente_id" />
                     </group>
