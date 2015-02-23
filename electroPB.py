@@ -1,33 +1,18 @@
-from openerp.osv import fields, orm
+from openerp.osv import fields, orm, osv
 
 #Empleado
-class Empleado(orm.Model):
-    _name = 'empleados.empleado'
-    _rec_name = 'nombre' #Indica que campo es el que guarda para mostrar por defecto
+class Empleados(osv.Model):
+    _name = 'hr.employee'
+    _inherit='hr.employee'
     _columns = {
-        'nif': fields.char('NIF', size=9, required=True),
-        'nombre': fields.char('Nombre', size=20),
-        'apellidos': fields.char('Apellidos', size=50),
-        'direccion': fields.char('Direccion', size=50),
-        'fecha_nacimiento': fields.date('Fecha Nacimiento'),
-        'telefono': fields.char('Telefono', size=9),
-        'image': fields.binary('Imagen', help='Seleccionar imagen aqui')
+        'hojas_servicio_ids':fields.one2many('hojas.hoja','empleado_id','Hojas de Servicio')
     }
-    # Orden para que nos muestre primero las ultimas personas
-    _order = 'id desc'
-
-    # Restriccion unica al campo NIF
-    _sql_constraints = [
-        ('nif_unique', 'unique(nif)', 'El NIF debe ser unico'),
-    ]
-Empleado()
+Empleados()
 
 #FlotaFurgonetas
-
-SELECTION_LIST_1 = (('MV1','Caddy'), ('MV2','Transporter'))
-SELECTION_LIST_2 = (('MF1','Transit'), ('MF2','Tourneo'))
-SELECTION_LIST_3 = (('MR1','Kangoo'), ('MR2','Traffic'))
-
+#SELECTION_LIST_1 = (('MV1','Caddy'), ('MV2','Transporter'))
+#SELECTION_LIST_2 = (('MF1','Transit'), ('MF2','Tourneo'))
+#SELECTION_LIST_3 = (('MR1','Kangoo'), ('MR2','Traffic'))
 class Furgoneta(orm.Model):
     _name = 'furgonetas.furgoneta'
     _rec_name = 'modelo'
@@ -68,12 +53,31 @@ Servicio()
 class HojaServicio(orm.Model):
     _name = 'hojas.hoja'
     _columns = {
-        'empleado_id':fields.many2one('empleados.empleado','Empleado'),
-        'hora_salida':fields.date('Hora salida'),
-        'hora_llegada':fields.date('Hora llegada'),
+        'empleado_id':fields.many2one('hr.employee','Empleado'),
+        'hora_salida':fields.datetime('Hora salida'),
+        'hora_llegada':fields.datetime('Hora llegada'),
         'furgoneta_id':fields.many2one('furgonetas.furgoneta','Furgoneta'),
         'servicio_ids':fields.one2many('servicios.servicio','hoja_id','Servicios')
     }
 HojaServicio()
 
+#Clientes
+"""class Cliente(orm.Model):
+    _name = 'clientes.cliente'
+    _rec_name = 'nombre' #Indica que campo es el que guarda para mostrar por defecto
+    _columns = {
+        'nif': fields.char('NIF', size=9, required=True),
+        'nombre': fields.char('Nombre', size=20),
+        'apellidos': fields.char('Apellidos', size=50),
+        'direccion': fields.char('Direccion', size=50),
+        'telefono': fields.char('Telefono', size=9),
+        'image': fields.binary('Imagen', help='Seleccionar imagen aqui')
+    }
+    # Orden para que nos muestre primero las ultimas personas
+    _order = 'id desc'
 
+    # Restriccion unica al campo NIF
+    _sql_constraints = [
+        ('nif_unique', 'unique(nif)', 'El NIF debe ser unico'),
+    ]
+Cliente()"""

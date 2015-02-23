@@ -4,111 +4,26 @@
      
         <!-- EMPLEADO: SECCIÓN CON LAS VISTAS -->
             <!-- Declaración del formulario -->
-            <record model="ir.ui.view" id="empleados_form">
-                <field name="name">Empleado</field>
-                <field name="model">empleados.empleado</field> <!--El modelo se corresponde con el nombre de la clase, en este caso la clase empleado.-->
+            <record model="ir.ui.view" id="empleados_form_view">
+                <field name="name">empleados.view.form</field>
+                <field name="model">hr.employee</field>
+                <field name="inherit_id" ref="hr.view_employee_form"/>
                 <field name="type">form</field>
                 <field name="arch" type="xml">
-                    <form string="Empleados">
-                        <group col='2' colspan='2'>
-                            <field name="image" widget='image' class="oe_left oe_avatar"/>
-                            <field name="nif" />
-                            <field name="nombre" />
-                            <field name="apellidos" />
-                            <field name="direccion" />
-                            <field name="fecha_nacimiento" />
-                            <field name="telefono" />
-                        </group>
-                    </form>
-                </field>
-            </record>
-
-            <!-- Declaración de la vista de árbol-->
-            <record model="ir.ui.view" id="empleados_tree">
-                <field name="name">Empleado</field>
-                <field name="model">empleados.empleado</field>
-                <field name="type">tree</field>
-                <field name="arch" type="xml">
-                    <tree string="Empleados">
-                        <field name="nif" />
-                        <field name="nombre" />
-                        <field name="apellidos" />
-                        <field name="direccion" />
-                        <field name="fecha_nacimiento" />
-                        <field name="telefono" />
-                    </tree>
-                </field>
-            </record>
-
-            <!-- Declaración de la vista de kanban-->
-            <record model="ir.ui.view" id="empleados_kanban">
-                <field name="name">Empleado</field>
-                <field name="model">empleados.empleado</field>
-                <field name="type">kanban</field>
-                <field name="arch" type="xml">
-                    <kanban>
-                        <field name="image"/>
-                        <templates>
-                            <!--<xpath expr="." position="inside">
-                                <link rel="stylesheet" href="/Modulo_PrickBreakers/static/src/css/electroPB.css" />
-                            </xpath>-->
-                            <!--<style type="text/css">
-                                body {
-                                color: #000 !important;
-                                }
-                                .border-black td {
-                                border-top: 1px solid black !important;
-                                }
-                                .table-condensed > thead > tr > th {
-                                border-bottom: 1px solid black !important;
-                                }
-                                .zero_min_height {
-                                min-height: 0px !important;
-                                }
-                                .oe_resource_vignete{
-                                display: inline-block;
-                                padding: 20px;
-                                float: right:
-                                }
-                                
-                                .oe_resource_details{
-                                text-align: right;
-                                margin-left: 5px;
-                                }
-                                
-                                .oe_resource_photo, .oe_resource_picture{
-                                width: 62px;
-                                height: 62px;
-                                }
-                            </style>-->
-                            <t t-name="kanban-box">
-                                <div class="oe_resource_vignette">
-                                    <div class="oe_resource_image" style="width: 200px; height: 200px;" >
-                                        <a type="open">
-                                            <img t-att-src="kanban_image('empleados.empleado', 'image', 'record.id.value')" class="oe_resource_photo" style="width: 200px; height: 200px; margin-left:20px; margin-top:15px;" />
-                                        </a>
-                                    </div>
-                                    <div class="oe_resource_details" style="width: 200px; height: 200px; margin-left:20px; margin-top:15px; text-align: center;">
-                                        <ul>
-                                            <li><field name="nombre"/></li>
-                                            <li><field name="telefono"/></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </t>
-                        </templates>
-                    </kanban>
+                    <field name="work_location" position="replace">
+                        <field name="hojas_servicio_ids"/>
+                    </field>
                 </field>
             </record>
         <!-- FIN VISTAS EMPLEADO -->
          
         <!-- EMPLEADO: ACCIONES -->
-            <record model="ir.actions.act_window" id="action_empleado">
-                <field name="name">Empleado</field>
-                <field name="res_model">empleados.empleado</field>
-                <field name="view_type">form</field>
-                <field name="view_mode">tree,form,kanban</field>
-            </record>
+        <record model="ir.actions.act_window" id="action_empleados_view_form">
+            <field name="name">empleados</field>
+            <field name="res_model">hr.employee</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,form</field>
+        </record>
         <!-- FIN ACCIONES EMPLEADO -->
 
         <!-- FURGONETA: SECCIÓN CON LAS VISTAS -->
@@ -182,9 +97,6 @@
                 <field name="view_mode">tree,form,kanban</field>
             </record>
         <!-- FIN ACCIONES FURGONETA -->
-
-
-
 
         <!-- SERVICIO: SECCIÓN CON LAS VISTAS -->
             <!-- Declaración del formulario -->
@@ -281,10 +193,10 @@
             <!-- FIN ACCIONES HOJASERVICIO -->
 
         <!-- MENÚ -->
-            <menuitem id="menu_empleados_main" name="ElectroPB" action="action_empleado"/>
+            <menuitem id="menu_empleados_main" name="ElectroPB" action="action_empleados_view_form"/>
             <menuitem id="menu_empleados_gestion" parent="menu_empleados_main" name="Gestionar"/>
-            <menuitem id="menu_empleados_empleados" parent="menu_empleados_gestion" name="Empleados" action="action_empleado" />
-            <menuitem id="menu_empleados_perfiles" parent="menu_empleados_empleados" name="Perfiles" action="action_empleado"/>
+            <menuitem id="menu_empleados_empleados" parent="menu_empleados_gestion" name="Empleados" action="action_empleados_view_form" />
+            <menuitem id="menu_empleados_perfiles" parent="menu_empleados_empleados" name="Perfiles" action="action_empleados_view_form"/>
             <menuitem id="menu_furgonetas_furgonetas" parent="menu_empleados_gestion" name="Furgonetas" action="action_furgoneta" />
             <menuitem id="menu_furgonetas_datos" parent="menu_furgonetas_furgonetas" name="Flota" action="action_furgoneta" />
             <menuitem id="menu_servicios_servicios" parent="menu_empleados_gestion" name="Servicios" action="action_servicio" />

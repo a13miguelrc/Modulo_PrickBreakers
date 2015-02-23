@@ -23,10 +23,11 @@
     "name": "ElectroPB",
     "icon": "/Modulo_PrickBreakers/static/img/icon.png",
     #"css": ['/Modulo_PrickBreakers/static/src/css/electroPB.css'],
-    "version": "0.1",
+    "version": "1.2",
+    "website" : "http://prickbreakers.es",
     "category": "",
     "depends": [
-                'base',
+                'base','hr'
                 ],
     "author": "PrickBreakers",
     "description": "Módulo para gestionar empleados de una empresa de electrodomésticos",
