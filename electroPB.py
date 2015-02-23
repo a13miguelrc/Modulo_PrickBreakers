@@ -40,14 +40,24 @@ class Servicio(orm.Model):
     _rec_name = 'codigo'
     _columns = {
         'codigo':fields.integer('Codigo'),
-        'tipo':fields.selection((('REP','Reparacion'), ('E','Entrega'), ('REC','Recogida')),'Tipo'),
+        'tipo':fields.selection((('R','Reparacion'), ('E','Entrega')),'Tipo'),
         'electrodomestico':fields.char('Electrodomestico',size=40),
         'descripcion':fields.char('Descripcion',size=120),
+        'is_reparacion':fields.boolean('Is Reparacion'),
         'reparado':fields.boolean('Reparado'),
+        'pago':fields.float('Pago'),
         'direccion':fields.char('Direccion',size=50),
         'hoja_id': fields.many2one('hojas.hoja', 'Hoja de Servicio'),
         'cliente_id':fields.many2one('res.partner','Cliente')
     }
+    def _is_reparacion(self, cr, uid, ids, tipo):
+        if tipo == 'R':
+            v = {'is_reparacion': 'True'}
+            return {'value': v}
+        elif tipo == 'E':
+            v = {'is_reparacion': 'False'}
+            return {'value': v}
+
 Servicio()
 
 #HojaDeServicio

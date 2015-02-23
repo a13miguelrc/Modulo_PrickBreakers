@@ -110,11 +110,13 @@
                 <form string="Servicios">
                     <group col='2' colspan='2'>
                         <field name="codigo" />
-                        <field name="tipo" />
+                        <field name="tipo" on_change="_is_reparacion(tipo)"/>
                         <field name="electrodomestico" />
                         <field name="descripcion" />
                         <field name="direccion" />
-                        <field name="reparado" /> <!--on_change="reparado_habilitar"-->
+                        <field name="is_reparacion" attrs="{'invisible': True}"/>
+                        <field name="reparado" attrs="{'invisible':[('is_reparacion', '=', False)]}" />
+                        <field name="pago" attrs="{'invisible':[('reparado', '=', False)]}" />
                         <field name="hoja_id" />
                         <field name="cliente_id" />
                     </group>
@@ -134,7 +136,9 @@
                     <field name="electrodomestico" />
                     <field name="descripcion" />
                     <field name="direccion" />
-                    <field name="reparado" /> <!--on_change="reparado_habilitar"-->
+                    <field name="is_reparacion" attrs="{'invisible': True}"/>
+                    <field name="reparado" attrs="{'invisible':[('is_reparacion', '=', False)]}" />
+                    <field name="pago" attrs="{'invisible':[('reparado', '=', False)]}" />
                     <field name="hoja_id" />
                     <field name="cliente_id" />
                 </tree>
