@@ -192,6 +192,32 @@
             </record>
             <!-- FIN ACCIONES HOJASERVICIO -->
 
+        <!-- CLIENTE: SECCIÓN CON LAS VISTAS -->
+            <!-- Declaración del formulario -->
+            <record model="ir.ui.view" id="clientes_form_view">
+                <field name="name">clientes.view.form</field>
+                <field name="model">res.partner</field>
+                <field name="inherit_id" ref="base.view_partner_form"/>
+                <field name="type">form</field>
+                <field name="arch" type="xml">
+                    <notebook position="inside">
+                        <page string="Servicios">
+                            <field name="servicio_ids"/>
+                        </page>
+                    </notebook>
+                </field>
+            </record>
+        <!-- FIN VISTAS CLIENTE -->
+
+        <!-- CLIENTE: ACCIONES -->
+        <record model="ir.actions.act_window" id="action_clientes_view_form">
+            <field name="name">clientes</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,form</field>
+        </record>
+        <!-- FIN ACCIONES CLIENTE -->
+
         <!-- MENÚ -->
             <menuitem id="menu_empleados_main" name="ElectroPB" action="action_empleados_view_form"/>
             <menuitem id="menu_empleados_gestion" parent="menu_empleados_main" name="Gestionar"/>
