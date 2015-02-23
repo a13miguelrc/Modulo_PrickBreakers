@@ -131,10 +131,10 @@
                 <tree string="Furgonetas">
                     <field name="codigo" />
                     <field name="tipo" />
-                    <field name="ubicacion" />
                     <field name="electrodomestico" />
                     <field name="descripcion" />
                     <field name="direccion" />
+                    <field name="reparado" /> <!--on_change="reparado_habilitar"-->
                     <field name="hoja_id" />
                     <field name="cliente_id" />
                 </tree>
