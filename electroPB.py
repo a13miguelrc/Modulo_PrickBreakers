@@ -63,7 +63,7 @@ class HojaServicio(orm.Model):
 HojaServicio()
 
 #Clientes
-class Cliente(orm.Model):
+class Cliente(osv.Model):
     _name = 'res.partner'
     _inherit='res.partner'
     _columns = {
