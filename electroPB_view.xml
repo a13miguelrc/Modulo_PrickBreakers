@@ -10,9 +10,11 @@
             <field name="inherit_id" ref="hr.view_employee_form"/>
             <field name="type">form</field>
             <field name="arch" type="xml">
-                <field name="work_location" position="replace">
-                    <field name="hojas_servicio_ids"/>
-                </field>
+                <notebook position="inside">
+                    <page string="Servicios">
+                        <field name="hojas_servicio_ids"/>
+                    </page>
+                </notebook>
             </field>
         </record>
         <!-- FIN VISTAS EMPLEADO -->
@@ -114,6 +116,7 @@
                         <field name="direccion" />
                         <field nome="reparado" on_change="reparado_habilitar"/>
                         <field name="hoja_id" />
+                        <field name="cliente_id" />
                     </group>
                 </form>
             </field>
@@ -132,8 +135,8 @@
                     <field name="electrodomestico" />
                     <field name="descripcion" />
                     <field name="direccion" />
-
                     <field name="hoja_id" />
+                    <field name="cliente_id" />
                 </tree>
             </field>
         </record>
@@ -230,6 +233,8 @@
         <menuitem id="menu_servicios_datos" parent="menu_servicios_servicios" name="Informacion" action="action_servicio" />
         <menuitem id="menu_hojas_hojas" parent="menu_empleados_gestion" name="Hojas de Servicio" action="action_hoja" />
         <menuitem id="menu_hojas_datos" parent="menu_hojas_hojas" name="Itinerario" action="action_hoja" />
+        <menuitem id="menu_clientes_clientes" parent="menu_empleados_gestion" name="Clientes" action="action_clientes_view_form" />
+        <menuitem id="menu_clientes_datos" parent="menu_clientes_clientes" name="Alias" action="action_clientes_view_form" />
         <!-- FIN MENU -->
 
     </data>
