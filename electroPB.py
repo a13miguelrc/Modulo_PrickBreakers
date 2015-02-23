@@ -45,7 +45,8 @@ class Servicio(orm.Model):
         'electrodomestico':fields.char('Electrodomestico',size=40),
         'descripcion':fields.char('Descripcion',size=120),
         'direccion':fields.char('Direccion',size=50),
-        'hoja_id': fields.many2one('hojas.hoja', 'Hoja de Servicio')
+        'hoja_id': fields.many2one('hojas.hoja', 'Hoja de Servicio'),
+        'cliente_id':fields.many2one('res.partner','Cliente')
     }
 Servicio()
 
@@ -62,22 +63,10 @@ class HojaServicio(orm.Model):
 HojaServicio()
 
 #Clientes
-"""class Cliente(orm.Model):
-    _name = 'clientes.cliente'
-    _rec_name = 'nombre' #Indica que campo es el que guarda para mostrar por defecto
+class Cliente(orm.Model):
+    _name = 'res.partner'
+    _inherit='res.partner'
     _columns = {
-        'nif': fields.char('NIF', size=9, required=True),
-        'nombre': fields.char('Nombre', size=20),
-        'apellidos': fields.char('Apellidos', size=50),
-        'direccion': fields.char('Direccion', size=50),
-        'telefono': fields.char('Telefono', size=9),
-        'image': fields.binary('Imagen', help='Seleccionar imagen aqui')
+        'servicio_ids':fields.one2many('servicios.servicio','cliente_id','Servicios')
     }
-    # Orden para que nos muestre primero las ultimas personas
-    _order = 'id desc'
-
-    # Restriccion unica al campo NIF
-    _sql_constraints = [
-        ('nif_unique', 'unique(nif)', 'El NIF debe ser unico'),
-    ]
-Cliente()"""
+Cliente()
