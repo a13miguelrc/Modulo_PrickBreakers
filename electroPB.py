@@ -41,9 +41,9 @@ class Servicio(orm.Model):
     _columns = {
         'codigo':fields.integer('Codigo'),
         'tipo':fields.selection((('REP','Reparacion'), ('E','Entrega'), ('REC','Recogida')),'Tipo'),
-        'ubicacion':fields.selection((('D','A Domicilio'), ('T','Taller')),'Ubicacion'),
         'electrodomestico':fields.char('Electrodomestico',size=40),
         'descripcion':fields.char('Descripcion',size=120),
+        'reparado':fields.boolean('Reparado'),
         'direccion':fields.char('Direccion',size=50),
         'hoja_id': fields.many2one('hojas.hoja', 'Hoja de Servicio'),
         'cliente_id':fields.many2one('res.partner','Cliente')
